@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pretty - Lyrics</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #ffdde1, #d4fc79);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+        #lyrics {
+            font-size: 24px;
+            position: absolute;
+            bottom: 20%;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+    </style>
+</head>
+<body>
+    <audio id="song" controls autoplay>
+        <source src="JVKE - pretty (official lyric video)-[AudioTrimmer.com].mp3" type="audio/mpeg">
+        Your browser does not support the audio tag.
+    </audio>
+    <div id="lyrics"></div>
+
+    <script>
+        const lyrics = [
+            "Yeah, the sun has good taste",
+            "He's peeking through the blinders just to get a glimpse of your face",
+            "And he traveled quite a ways",
+            "Ninety million miles to see what I get to see every day, hey",
+            "Darling, you're beautiful in every single way",
+            "And there's nothing I'd change, hey",
+            "My love stays the same",
+            "'Cause you're my pretty (Ooh-ooh, ooh-ooh-ooh-ooh)",
+            "Definition of beauty (Ooh-ooh, ooh-ooh)",
+            "And out of everything I've seen (Everything I've seen)",
+            "Nothing can compete with you (Nothing can compete) with you",
+            "My pretty (Ooh-ooh, ooh-ooh)"
+        ];
+        const timings = [2, 5, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44];
+
+        const lyricsDiv = document.getElementById("lyrics");
+        const audio = document.getElementById("song");
+
+        function showLyrics(index) {
+            if (index < lyrics.length) {
+                lyricsDiv.innerText = lyrics[index];
+                lyricsDiv.style.opacity = 1;
+                setTimeout(() => { lyricsDiv.style.opacity = 0; }, 3000);
+            }
+        }
+
+        audio.addEventListener("timeupdate", () => {
+            for (let i = 0; i < timings.length; i++) {
+                if (Math.floor(audio.currentTime) === timings[i]) {
+                    showLyrics(i);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
