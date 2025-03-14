@@ -48,7 +48,10 @@
             "Nothing can compete with you (Nothing can compete) with you",
             "My pretty (Ooh-ooh, ooh-ooh)"
         ];
-        const timings = [2, 5, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44];
+        
+        const timings = [2, 6, 10, 15, 20, 25, 30, 34, 38, 42, 46, 50];
+        
+        const displayDurations = [5000, 6000, 5500, 7000, 6000, 5000, 5000, 6500, 6000, 5000, 5500, 6000];
 
         const lyricsDiv = document.getElementById("lyrics");
         const audio = document.getElementById("song");
@@ -57,7 +60,10 @@
             if (index < lyrics.length) {
                 lyricsDiv.innerText = lyrics[index];
                 lyricsDiv.style.opacity = 1;
-                setTimeout(() => { lyricsDiv.style.opacity = 0; }, 5000);
+
+                setTimeout(() => { 
+                    lyricsDiv.style.opacity = 0; 
+                }, displayDurations[index]); // Each lyric disappears at its own time
             }
         }
 
@@ -71,3 +77,4 @@
     </script>
 </body>
 </html>
+
